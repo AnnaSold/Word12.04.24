@@ -56,6 +56,22 @@ public class Main {
         return word;
     }
     public static List replacaWords(List spisokDict){
+        HashMap<String, Integer> h = new HashMap<String, Integer>();
+        for (int i = 0; i < spisokDict.size(); i++) {
+            if (h.containsKey(spisokDict.get(i))) {
+                h.replace(spisokDict.get(i), h.get(spisokDict.get(i)) + 1);
+            } else {
+                h.put(spisokDict.get(i), 1);
+            }
+        }
+        String s = null;
+        int p = 0;
+        for (String w : h.keySet()) {
+            if (p < h.get(w)) {
+                p = h.get(w);
+                s = w;
+            }
+        }
 
         return spisokDict;
 
